@@ -725,6 +725,23 @@ body {
     border: 1px solid rgba(247, 231, 206, 0.2);
 }
 
+.perfume-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.perfume-badge {
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+    background: var(--color-champagne);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
 .perfume-reason {
     font-size: 0.875rem;
     line-height: 1.6;
