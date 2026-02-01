@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fragrantic.ai - Yapay zeka destekli lüks parfüm danışmanlığı. Yaşam tarzınıza özel koku önerileri alın.">
+    <title>Fragrantic.ai | Kişisel Parfüm Danışmanınız</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">Fragrantic</span><span class="logo-dot">.ai</span>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <p class="hero-tagline">Yapay Zeka Destekli Parfüm Danışmanlığı</p>
+            <h1 class="hero-title">İmza Kokunuzu<br><em>Keşfedin</em></h1>
+            <p class="hero-description">Yaşam tarzınızı, karakterinizi ve tercihlerinizi anlayarak size özel parfüm önerileri sunuyoruz.</p>
+            <button id="start-btn" class="cta-button">
+                <span>Koku Profilini Oluştur</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="form-section" class="form-section hidden">
+        <div class="form-container">
+            <div class="form-header">
+                <span class="form-step">Adım <span id="current-step">1</span> / 5</span>
+                <h2 class="form-title">Koku Profilinizi Oluşturun</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <form id="scent-form">
+                <!-- Step 1: Past Perfumes -->
+                <div class="form-step-content active" data-step="1">
+                    <div class="question-card">
+                        <span class="question-number">01</span>
+                        <h3 class="question-title">Geçmiş Deneyimleriniz</h3>
+                        <p class="question-desc">Daha önce severek kullandığınız bir parfüm var mı?</p>
+                        <div class="input-wrapper">
+                            <input type="text" id="past-perfume" placeholder="Örn: Dior Sauvage, Chanel No.5..." class="text-input">
+                            <span class="input-hint">Boş bırakabilirsiniz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Age Group -->
+                <div class="form-step-content" data-step="2">
+                    <div class="question-card">
+                        <span class="question-number">02</span>
+                        <h3 class="question-title">Yaş Grubunuz</h3>
+                        <p class="question-desc">Size en uygun kokuları belirlemek için yaş aralığınızı seçin.</p>
+                        <div class="select-wrapper">
+                            <select id="age-group" class="select-input">
+                                <option value="">Seçiniz...</option>
+                                <option value="18-25">18 - 25 yaş</option>
+                                <option value="26-35">26 - 35 yaş</option>
+                                <option value="36-50">36 - 50 yaş</option>
+                                <option value="50+">50+ yaş</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Environment -->
+                <div class="form-step-content" data-step="3">
+                    <div class="question-card">
+                        <span class="question-number">03</span>
+                        <h3 class="question-title">Kullanım Ortamı</h3>
+                        <p class="question-desc">Parfümünüzü en çok hangi ortamda kullanacaksınız?</p>
+                        <div class="selection-grid">
+                            <label class="selection-card" for="env-corporate">
+                                <input type="radio" name="environment" id="env-corporate" value="corporate">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
+                                            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Kurumsal / Resmi</span>
+                                    <span class="card-desc">İş toplantıları, ofis ortamı</span>
+                                </div>
+                            </label>
+                            <label class="selection-card" for="env-creative">
+                                <input type="radio" name="environment" id="env-creative" value="creative">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Kreatif / Rahat</span>
+                                    <span class="card-desc">Yaratıcı ortamlar, günlük kullanım</span>
+                                </div>
+                            </label>
+                            <label class="selection-card" for="env-outdoor">
+                                <input type="radio" name="environment" id="env-outdoor" value="outdoor">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="12" cy="12" r="5"/>
+                                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Açık Hava / Aktif</span>
+                                    <span class="card-desc">Spor, doğa aktiviteleri</span>
+                                </div>
+                            </label>
+                            <label class="selection-card" for="env-night">
+                                <input type="radio" name="environment" id="env-night" value="night">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Gece / Davet</span>
+                                    <span class="card-desc">Özel geceler, etkinlikler</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Season -->
+                <div class="form-step-content" data-step="4">
+                    <div class="question-card">
+                        <span class="question-number">04</span>
+                        <h3 class="question-title">Mevsim Tercihi</h3>
+                        <p class="question-desc">Hangi hava koşullarında kullanacaksınız?</p>
+                        <div class="toggle-container">
+                            <button type="button" class="toggle-option active" data-value="warm">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="5"/>
+                                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                                </svg>
+                                <span>Sıcak Havalar</span>
+                            </button>
+                            <button type="button" class="toggle-option" data-value="cold">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/>
+                                </svg>
+                                <span>Soğuk Havalar</span>
+                            </button>
+                        </div>
+                        <input type="hidden" id="season" value="warm">
+                    </div>
+                </div>
+
+                <!-- Step 5: Character -->
+                <div class="form-step-content" data-step="5">
+                    <div class="question-card">
+                        <span class="question-number">05</span>
+                        <h3 class="question-title">Karakter Özellikleri</h3>
+                        <p class="question-desc">Parfümünüzün yansıtmasını istediğiniz özellikleri seçin. (Birden fazla seçebilirsiniz)</p>
+                        <div class="multiselect-grid">
+                            <label class="multiselect-option" for="char-sophisticated">
+                                <input type="checkbox" id="char-sophisticated" name="character" value="sophisticated">
+                                <span class="option-content">
+                                    <span class="option-icon">✧</span>
+                                    <span class="option-label">Sofistike</span>
+                                </span>
+                            </label>
+                            <label class="multiselect-option" for="char-energetic">
+                                <input type="checkbox" id="char-energetic" name="character" value="energetic">
+                                <span class="option-content">
+                                    <span class="option-icon">⚡</span>
+                                    <span class="option-label">Enerjik</span>
+                                </span>
+                            </label>
+                            <label class="multiselect-option" for="char-mysterious">
+                                <input type="checkbox" id="char-mysterious" name="character" value="mysterious">
+                                <span class="option-content">
+                                    <span class="option-icon">◐</span>
+                                    <span class="option-label">Gizemli</span>
+                                </span>
+                            </label>
+                            <label class="multiselect-option" for="char-classic">
+                                <input type="checkbox" id="char-classic" name="character" value="classic">
+                                <span class="option-content">
+                                    <span class="option-icon">♔</span>
+                                    <span class="option-label">Klasik</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-navigation">
+                <button type="button" id="prev-btn" class="nav-btn prev-btn" disabled>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Geri</span>
+                </button>
+                <button type="button" id="next-btn" class="nav-btn next-btn">
+                    <span>İleri</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+                <button type="button" id="submit-btn" class="nav-btn submit-btn hidden">
+                    <span>Koku Profilimi Oluştur</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="results-section hidden">
+        <div class="results-container">
+            <div class="results-header">
+                <span class="results-badge">Analiz Tamamlandı</span>
+                <h2 class="results-title">Senin İmza Kokun<br><em>Bulundu</em></h2>
+                <p class="results-subtitle">Yaşam tarzına ve karakterine en uygun 3 parfümü senin için seçtik.</p>
+            </div>
+            <div class="perfume-cards" id="perfume-cards">
+                <!-- Perfume cards will be dynamically inserted here -->
+            </div>
+            <button id="restart-btn" class="restart-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                </svg>
+                <span>Yeni Profil Oluştur</span>
+            </button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
