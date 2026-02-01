@@ -282,6 +282,14 @@ document.addEventListener('DOMContentLoaded', init);
 function init() {
     setupEventListeners();
     updateFormUI();
+
+    // Check if coming from landing page (with #start hash)
+    if (window.location.hash === '#start') {
+        heroSection.classList.add('hidden');
+        formSection.classList.remove('hidden');
+        // Clean up the URL hash
+        history.replaceState(null, '', window.location.pathname);
+    }
 }
 
 function setupEventListeners() {
