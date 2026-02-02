@@ -1,255 +1,889 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Fragrantic.ai - Yapay zeka destekli lüks parfüm danışmanlığı. Yaşam tarzınıza özel koku önerileri alın.">
-    <title>Fragrantic.ai | Kişisel Parfüm Danışmanınız</title>
+    <meta name="description"
+        content="Fragrantic.ai - Yapay zeka ile senin ruhunu yansıtan parfümü keşfet. Kişiselleştirilmiş parfüm önerileri.">
+    <title>Fragrantic.ai | Kokunun Görünmeyen İmzası</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --color-champagne: #F7E7CE;
+            --color-champagne-light: #FBF3E4;
+            --color-champagne-dark: #E8D4B5;
+            --color-navy: #002366;
+            --color-navy-light: #0A3A8A;
+            --color-navy-dark: #001744;
+            --color-gold: #D4AF37;
+            --color-gold-light: #F4D03F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            background: linear-gradient(180deg,
+                    #0a0a1a 0%,
+                    #1a1a3a 30%,
+                    #2a2a5a 60%,
+                    #1a1a3a 100%);
+            min-height: 100vh;
+        }
+
+        /* Main Landing Container */
+        .landing-container {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animated Background - Stars & Particles */
+        .stars-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Ambient Light Effects */
+        .ambient-light {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: 1;
+            animation: ambientPulse 8s ease-in-out infinite;
+        }
+
+        .ambient-light-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--color-gold) 0%, transparent 70%);
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ambient-light-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #8B5CF6 0%, transparent 70%);
+            bottom: 10%;
+            left: 10%;
+            animation-delay: -3s;
+        }
+
+        .ambient-light-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #F472B6 0%, transparent 70%);
+            bottom: 20%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes ambientPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        /* Header */
+        .landing-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--color-champagne);
+        }
+
+        .logo-dot {
+            font-family: var(--font-sans);
+            font-size: 1.75rem;
+            color: var(--color-gold);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+            padding: 6rem 2rem 2rem;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        /* Floating Character Container */
+        .character-stage {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Orbiting Perfume Icons */
+        .orbit-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(247, 231, 206, 0.1);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-ring-1 {
+            width: 400px;
+            height: 400px;
+            animation: rotateOrbit 30s linear infinite;
+        }
+
+        .orbit-ring-2 {
+            width: 550px;
+            height: 550px;
+            animation: rotateOrbit 40s linear infinite reverse;
+        }
+
+        .orbit-ring-3 {
+            width: 700px;
+            height: 700px;
+            animation: rotateOrbit 50s linear infinite;
+        }
+
+        @keyframes rotateOrbit {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Perfume Icons */
+        .perfume-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(247, 231, 206, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+            animation: iconGlow 3s ease-in-out infinite;
+        }
+
+        .perfume-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--color-gold) 0%, transparent 50%);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes iconGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 8px 48px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        /* Position icons on orbits - counter-rotate to stay upright */
+        .orbit-ring-1 .perfume-icon:nth-child(1) {
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-ring-1 .perfume-icon:nth-child(2) {
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .orbit-ring-1 .perfume-icon:nth-child(3) {
+            top: 50%;
+            left: -25px;
+            transform: translateY(-50%);
+        }
+
+        .orbit-ring-1 .perfume-icon:nth-child(4) {
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%);
+        }
+
+        .orbit-ring-2 .perfume-icon:nth-child(1) {
+            top: 50px;
+            left: 30px;
+        }
+
+        .orbit-ring-2 .perfume-icon:nth-child(2) {
+            top: 50px;
+            right: 30px;
+        }
+
+        .orbit-ring-2 .perfume-icon:nth-child(3) {
+            bottom: 50px;
+            left: 30px;
+        }
+
+        .orbit-ring-2 .perfume-icon:nth-child(4) {
+            bottom: 50px;
+            right: 30px;
+        }
+
+        .orbit-ring-3 .perfume-icon:nth-child(1) {
+            top: -25px;
+            left: 30%;
+        }
+
+        .orbit-ring-3 .perfume-icon:nth-child(2) {
+            top: -25px;
+            right: 30%;
+        }
+
+        .orbit-ring-3 .perfume-icon:nth-child(3) {
+            bottom: -25px;
+            left: 30%;
+        }
+
+        .orbit-ring-3 .perfume-icon:nth-child(4) {
+            bottom: -25px;
+            right: 30%;
+        }
+
+        /* Floating Character */
+        .floating-character {
+            position: relative;
+            z-index: 20;
+            animation: heroFloat 4s ease-in-out infinite;
+        }
+
+        .floating-character img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 100px rgba(212, 175, 55, 0.3));
+            animation: characterGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.02);
+            }
+        }
+
+        @keyframes characterGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 80px rgba(212, 175, 55, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 30px 80px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 120px rgba(212, 175, 55, 0.5));
+            }
+        }
+
+        /* Power Aura */
+        .power-aura {
+            position: absolute;
+            width: 250px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(ellipse at center,
+                    rgba(212, 175, 55, 0.3) 0%,
+                    rgba(212, 175, 55, 0.1) 30%,
+                    transparent 70%);
+            filter: blur(30px);
+            z-index: 10;
+            animation: auraPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes auraPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+
+        /* Floating Particles around character */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-200px) translateX(var(--drift-x));
+                opacity: 0;
+            }
+        }
+
+        /* Text Content */
+        .text-content {
+            text-align: left;
+            z-index: 30;
+            max-width: 500px;
+        }
+
+        @media (max-width: 1024px) {
+            .text-content {
+                text-align: center;
+            }
+        }
+
+        .landing-tagline {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+        }
+
+        .landing-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 500;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.7s forwards;
+        }
+
+        .landing-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 50%, var(--color-champagne) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .landing-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin: 0 0 2.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.9s forwards;
+        }
+
+        @media (max-width: 1024px) {
+            .landing-subtitle {
+                margin: 0 auto 2.5rem;
+            }
+        }
+
+        /* CTA Button */
+        .landing-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-champagne-dark) 100%);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-navy-dark);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 1.1s forwards;
+        }
+
+        .landing-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 600ms ease;
+        }
+
+        .landing-cta:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .landing-cta:hover::before {
+            left: 100%;
+        }
+
+        .landing-cta svg {
+            transition: transform 300ms ease;
+        }
+
+        .landing-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            animation: fadeIn 1s ease 2s forwards;
+            opacity: 0;
+        }
+
+        .scroll-mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(247, 231, 206, 0.3);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-wheel {
+            width: 4px;
+            height: 8px;
+            background: var(--color-gold);
+            border-radius: 2px;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scrollWheel 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Footer */
+        .landing-footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 1.5rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .orbit-ring-1 {
+                width: 280px;
+                height: 280px;
+            }
+
+            .orbit-ring-2 {
+                width: 380px;
+                height: 380px;
+            }
+
+            .orbit-ring-3 {
+                width: 480px;
+                height: 480px;
+            }
+
+            .perfume-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .floating-character img {
+                max-width: 260px;
+            }
+
+            .ambient-light-1 {
+                width: 400px;
+                height: 400px;
+            }
+
+            .ambient-light-2 {
+                width: 250px;
+                height: 250px;
+            }
+
+            .ambient-light-3 {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .orbit-ring-1 {
+                width: 220px;
+                height: 220px;
+            }
+
+            .orbit-ring-2 {
+                width: 300px;
+                height: 300px;
+            }
+
+            .orbit-ring-3 {
+                width: 380px;
+                height: 380px;
+            }
+
+            .perfume-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .floating-character img {
+                max-width: 200px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-overlay"></div>
-        <nav class="navbar">
+    <div class="landing-container">
+        <!-- Stars Background -->
+        <div class="stars-container" id="stars"></div>
+
+        <!-- Ambient Light Effects -->
+        <div class="ambient-light ambient-light-1"></div>
+        <div class="ambient-light ambient-light-2"></div>
+        <div class="ambient-light ambient-light-3"></div>
+
+        <!-- Header -->
+        <header class="landing-header">
             <div class="logo">
                 <span class="logo-text">Fragrantic</span><span class="logo-dot">.ai</span>
             </div>
-        </nav>
-        <div class="hero-content">
-            <p class="hero-tagline">Yapay Zeka Destekli Parfüm Danışmanlığı</p>
-            <h1 class="hero-title">İmza Kokunuzu<br><em>Keşfedin</em></h1>
-            <p class="hero-description">Yaşam tarzınızı, karakterinizi ve tercihlerinizi anlayarak size özel parfüm önerileri sunuyoruz.</p>
-            <button id="start-btn" class="cta-button">
-                <span>Koku Profilini Oluştur</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </button>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Form Section -->
-    <section id="form-section" class="form-section hidden">
-        <div class="form-container">
-            <div class="form-header">
-                <span class="form-step">Adım <span id="current-step">1</span> / 5</span>
-                <h2 class="form-title">Koku Profilinizi Oluşturun</h2>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <!-- Character with Orbiting Perfumes -->
+                <div class="character-stage">
+                    <!-- Power Aura -->
+                    <div class="power-aura"></div>
+
+                    <!-- Orbiting Rings with Perfume Icons -->
+                    <div class="orbit-container">
+                        <div class="orbit-ring orbit-ring-1">
+                            <div class="perfume-icon">🧴</div>
+                            <div class="perfume-icon">✨</div>
+                            <div class="perfume-icon">💎</div>
+                            <div class="perfume-icon">🌸</div>
+                        </div>
+                        <div class="orbit-ring orbit-ring-2">
+                            <div class="perfume-icon">🌹</div>
+                            <div class="perfume-icon">🍊</div>
+                            <div class="perfume-icon">🌿</div>
+                            <div class="perfume-icon">⭐</div>
+                        </div>
+                        <div class="orbit-ring orbit-ring-3">
+                            <div class="perfume-icon">🔮</div>
+                            <div class="perfume-icon">🌙</div>
+                            <div class="perfume-icon">💫</div>
+                            <div class="perfume-icon">🎭</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Particles -->
+                    <div class="particle" style="left: 20%; bottom: 20%; --drift-x: -30px; animation-delay: 0s;"></div>
+                    <div class="particle" style="left: 40%; bottom: 10%; --drift-x: 20px; animation-delay: 1s;"></div>
+                    <div class="particle" style="left: 60%; bottom: 15%; --drift-x: -10px; animation-delay: 2s;"></div>
+                    <div class="particle" style="left: 80%; bottom: 25%; --drift-x: 40px; animation-delay: 3s;"></div>
+                    <div class="particle" style="left: 30%; bottom: 30%; --drift-x: -20px; animation-delay: 4s;"></div>
+                    <div class="particle" style="left: 70%; bottom: 20%; --drift-x: 15px; animation-delay: 5s;"></div>
+
+                    <!-- Floating Character -->
+                    <div class="floating-character">
+                        <img src="hero-character.jpg" alt="Fragrantic AI Hero">
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="text-content">
+                    <p class="landing-tagline">Yapay Zeka Destekli Parfüm Danışmanlığı</p>
+                    <h1 class="landing-title">
+                        Kokunun<br>
+                        <em>Süper Gücünü Keşfet</em>
+                    </h1>
+                    <p class="landing-subtitle">
+                        Senin için özel olarak tasarlanmış imza kokunu bul. Yapay zeka, yaşam tarzını ve karakterini
+                        analiz ederek sana özel parfümler önerir.
+                    </p>
+                    <a href="app.html#start" class="landing-cta">
+                        <span>Koku Profilini Oluştur</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
-            <form id="scent-form">
-                <!-- Step 1: Past Perfumes -->
-                <div class="form-step-content active" data-step="1">
-                    <div class="question-card">
-                        <span class="question-number">01</span>
-                        <h3 class="question-title">Geçmiş Deneyimleriniz</h3>
-                        <p class="question-desc">Daha önce severek kullandığınız bir parfüm var mı?</p>
-                        <div class="input-wrapper">
-                            <input type="text" id="past-perfume" placeholder="Örn: Dior Sauvage, Chanel No.5..." class="text-input">
-                            <span class="input-hint">Boş bırakabilirsiniz</span>
-                        </div>
-                    </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
                 </div>
-
-                <!-- Step 2: Age Group -->
-                <div class="form-step-content" data-step="2">
-                    <div class="question-card">
-                        <span class="question-number">02</span>
-                        <h3 class="question-title">Yaş Grubunuz</h3>
-                        <p class="question-desc">Size en uygun kokuları belirlemek için yaş aralığınızı seçin.</p>
-                        <div class="select-wrapper">
-                            <select id="age-group" class="select-input">
-                                <option value="">Seçiniz...</option>
-                                <option value="18-25">18 - 25 yaş</option>
-                                <option value="26-35">26 - 35 yaş</option>
-                                <option value="36-50">36 - 50 yaş</option>
-                                <option value="50+">50+ yaş</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Environment -->
-                <div class="form-step-content" data-step="3">
-                    <div class="question-card">
-                        <span class="question-number">03</span>
-                        <h3 class="question-title">Kullanım Ortamı</h3>
-                        <p class="question-desc">Parfümünüzü en çok hangi ortamda kullanacaksınız?</p>
-                        <div class="selection-grid">
-                            <label class="selection-card" for="env-corporate">
-                                <input type="radio" name="environment" id="env-corporate" value="corporate">
-                                <div class="card-content">
-                                    <div class="card-icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                            <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/>
-                                            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
-                                        </svg>
-                                    </div>
-                                    <span class="card-label">Kurumsal / Resmi</span>
-                                    <span class="card-desc">İş toplantıları, ofis ortamı</span>
-                                </div>
-                            </label>
-                            <label class="selection-card" for="env-creative">
-                                <input type="radio" name="environment" id="env-creative" value="creative">
-                                <div class="card-content">
-                                    <div class="card-icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                                        </svg>
-                                    </div>
-                                    <span class="card-label">Kreatif / Rahat</span>
-                                    <span class="card-desc">Yaratıcı ortamlar, günlük kullanım</span>
-                                </div>
-                            </label>
-                            <label class="selection-card" for="env-outdoor">
-                                <input type="radio" name="environment" id="env-outdoor" value="outdoor">
-                                <div class="card-content">
-                                    <div class="card-icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                            <circle cx="12" cy="12" r="5"/>
-                                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                                        </svg>
-                                    </div>
-                                    <span class="card-label">Açık Hava / Aktif</span>
-                                    <span class="card-desc">Spor, doğa aktiviteleri</span>
-                                </div>
-                            </label>
-                            <label class="selection-card" for="env-night">
-                                <input type="radio" name="environment" id="env-night" value="night">
-                                <div class="card-content">
-                                    <div class="card-icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-                                        </svg>
-                                    </div>
-                                    <span class="card-label">Gece / Davet</span>
-                                    <span class="card-desc">Özel geceler, etkinlikler</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Season -->
-                <div class="form-step-content" data-step="4">
-                    <div class="question-card">
-                        <span class="question-number">04</span>
-                        <h3 class="question-title">Mevsim Tercihi</h3>
-                        <p class="question-desc">Hangi hava koşullarında kullanacaksınız?</p>
-                        <div class="toggle-container">
-                            <button type="button" class="toggle-option active" data-value="warm">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="5"/>
-                                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                                </svg>
-                                <span>Sıcak Havalar</span>
-                            </button>
-                            <button type="button" class="toggle-option" data-value="cold">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/>
-                                </svg>
-                                <span>Soğuk Havalar</span>
-                            </button>
-                        </div>
-                        <input type="hidden" id="season" value="warm">
-                    </div>
-                </div>
-
-                <!-- Step 5: Character -->
-                <div class="form-step-content" data-step="5">
-                    <div class="question-card">
-                        <span class="question-number">05</span>
-                        <h3 class="question-title">Karakter Özellikleri</h3>
-                        <p class="question-desc">Parfümünüzün yansıtmasını istediğiniz özellikleri seçin. (Birden fazla seçebilirsiniz)</p>
-                        <div class="multiselect-grid">
-                            <label class="multiselect-option" for="char-sophisticated">
-                                <input type="checkbox" id="char-sophisticated" name="character" value="sophisticated">
-                                <span class="option-content">
-                                    <span class="option-icon">✧</span>
-                                    <span class="option-label">Sofistike</span>
-                                </span>
-                            </label>
-                            <label class="multiselect-option" for="char-energetic">
-                                <input type="checkbox" id="char-energetic" name="character" value="energetic">
-                                <span class="option-content">
-                                    <span class="option-icon">⚡</span>
-                                    <span class="option-label">Enerjik</span>
-                                </span>
-                            </label>
-                            <label class="multiselect-option" for="char-mysterious">
-                                <input type="checkbox" id="char-mysterious" name="character" value="mysterious">
-                                <span class="option-content">
-                                    <span class="option-icon">◐</span>
-                                    <span class="option-label">Gizemli</span>
-                                </span>
-                            </label>
-                            <label class="multiselect-option" for="char-classic">
-                                <input type="checkbox" id="char-classic" name="character" value="classic">
-                                <span class="option-content">
-                                    <span class="option-icon">♔</span>
-                                    <span class="option-label">Klasik</span>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-            <div class="form-navigation">
-                <button type="button" id="prev-btn" class="nav-btn prev-btn" disabled>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    <span>Geri</span>
-                </button>
-                <button type="button" id="next-btn" class="nav-btn next-btn">
-                    <span>İleri</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </button>
-                <button type="button" id="submit-btn" class="nav-btn submit-btn hidden">
-                    <span>Koku Profilimi Oluştur</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
-                </button>
+                <span>AŞAĞI KAYDIR</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Results Section -->
-    <section id="results-section" class="results-section hidden">
-        <div class="results-container">
-            <div class="results-header">
-                <span class="results-badge">Analiz Tamamlandı</span>
-                <h2 class="results-title">Senin İmza Kokun<br><em>Bulundu</em></h2>
-                <p class="results-subtitle">Yaşam tarzına ve karakterine en uygun 3 parfümü senin için seçtik.</p>
-            </div>
-            <div class="perfume-cards" id="perfume-cards">
-                <!-- Perfume cards will be dynamically inserted here -->
-            </div>
-            <button id="restart-btn" class="restart-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/>
-                    <path d="M3 3v5h5"/>
-                </svg>
-                <span>Yeni Profil Oluştur</span>
-            </button>
-        </div>
-    </section>
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <p>Lüks parfüm danışmanlığı deneyimi ✦ Fragrantic.ai</p>
+        </footer>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Create dynamic stars
+        function createStars() {
+            const container = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Counter-rotate perfume icons to keep them upright
+        function setupCounterRotation() {
+            const rings = document.querySelectorAll('.orbit-ring');
+
+            rings.forEach(ring => {
+                const icons = ring.querySelectorAll('.perfume-icon');
+                const isReverse = ring.classList.contains('orbit-ring-2');
+
+                icons.forEach(icon => {
+                    // Get the ring's rotation duration
+                    const computedStyle = getComputedStyle(ring);
+                    const duration = parseFloat(computedStyle.animationDuration) || 30;
+
+                    // Counter-rotate the icon
+                    icon.style.animation = `counterRotate ${duration}s linear infinite${isReverse ? ' reverse' : ''}`;
+                });
+            });
+
+            // Add counter-rotate keyframes
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes counterRotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(-360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Mouse parallax effect
+        function setupParallax() {
+            const character = document.querySelector('.floating-character');
+            const aura = document.querySelector('.power-aura');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                character.style.transform = `translateY(${-15 + y * 0.5}px) translateX(${x * 0.5}px)`;
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            setupCounterRotation();
+            setupParallax();
+        });
+    </script>
 </body>
+
 </html>
