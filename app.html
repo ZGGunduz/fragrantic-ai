@@ -39,7 +39,7 @@
     <section id="form-section" class="form-section hidden">
         <div class="form-container">
             <div class="form-header">
-                <span class="form-step">Adım <span id="current-step">1</span> / 5</span>
+                <span class="form-step">Adım <span id="current-step">1</span> / 6</span>
                 <h2 class="form-title">Koku Profilinizi Oluşturun</h2>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
@@ -47,10 +47,60 @@
             </div>
 
             <form id="scent-form">
-                <!-- Step 1: Past Perfumes -->
+                <!-- Step 1: Gender Selection -->
                 <div class="form-step-content active" data-step="1">
                     <div class="question-card">
                         <span class="question-number">01</span>
+                        <h3 class="question-title">Cinsiyet Tercihiniz</h3>
+                        <p class="question-desc">Size uygun parfümleri gösterebilmemiz için cinsiyetinizi seçin.</p>
+                        <div class="selection-grid gender-grid">
+                            <label class="selection-card" for="gender-female">
+                                <input type="radio" name="gender" id="gender-female" value="K">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="12" cy="8" r="5"/>
+                                            <path d="M12 13v8M9 18h6"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Kadın</span>
+                                    <span class="card-desc">Kadın parfümleri</span>
+                                </div>
+                            </label>
+                            <label class="selection-card" for="gender-male">
+                                <input type="radio" name="gender" id="gender-male" value="E">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="10" cy="14" r="5"/>
+                                            <path d="M19 5l-5.4 5.4M19 5h-5M19 5v5"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Erkek</span>
+                                    <span class="card-desc">Erkek parfümleri</span>
+                                </div>
+                            </label>
+                            <label class="selection-card" for="gender-unisex">
+                                <input type="radio" name="gender" id="gender-unisex" value="Unisex">
+                                <div class="card-content">
+                                    <div class="card-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <circle cx="12" cy="12" r="4"/>
+                                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                        </svg>
+                                    </div>
+                                    <span class="card-label">Unisex</span>
+                                    <span class="card-desc">Her iki cinsiyet için</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Past Perfumes -->
+                <div class="form-step-content" data-step="2">
+                    <div class="question-card">
+                        <span class="question-number">02</span>
                         <h3 class="question-title">Geçmiş Deneyimleriniz</h3>
                         <p class="question-desc">Daha önce severek kullandığınız bir parfüm var mı?</p>
                         <div class="input-wrapper">
@@ -60,10 +110,10 @@
                     </div>
                 </div>
 
-                <!-- Step 2: Age Group -->
-                <div class="form-step-content" data-step="2">
+                <!-- Step 3: Age Group -->
+                <div class="form-step-content" data-step="3">
                     <div class="question-card">
-                        <span class="question-number">02</span>
+                        <span class="question-number">03</span>
                         <h3 class="question-title">Yaş Grubunuz</h3>
                         <p class="question-desc">Size en uygun kokuları belirlemek için yaş aralığınızı seçin.</p>
                         <div class="select-wrapper">
@@ -78,10 +128,10 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Environment -->
-                <div class="form-step-content" data-step="3">
+                <!-- Step 4: Environment -->
+                <div class="form-step-content" data-step="4">
                     <div class="question-card">
-                        <span class="question-number">03</span>
+                        <span class="question-number">04</span>
                         <h3 class="question-title">Kullanım Ortamı</h3>
                         <p class="question-desc">Parfümünüzü en çok hangi ortamda kullanacaksınız?</p>
                         <div class="selection-grid">
@@ -140,10 +190,10 @@
                     </div>
                 </div>
 
-                <!-- Step 4: Season -->
-                <div class="form-step-content" data-step="4">
+                <!-- Step 5: Season -->
+                <div class="form-step-content" data-step="5">
                     <div class="question-card">
-                        <span class="question-number">04</span>
+                        <span class="question-number">05</span>
                         <h3 class="question-title">Mevsim Tercihi</h3>
                         <p class="question-desc">Hangi hava koşullarında kullanacaksınız?</p>
                         <div class="toggle-container">
@@ -165,10 +215,10 @@
                     </div>
                 </div>
 
-                <!-- Step 5: Character -->
-                <div class="form-step-content" data-step="5">
+                <!-- Step 6: Character -->
+                <div class="form-step-content" data-step="6">
                     <div class="question-card">
-                        <span class="question-number">05</span>
+                        <span class="question-number">06</span>
                         <h3 class="question-title">Karakter Özellikleri</h3>
                         <p class="question-desc">Parfümünüzün yansıtmasını istediğiniz özellikleri seçin. (Birden fazla seçebilirsiniz)</p>
                         <div class="multiselect-grid">
